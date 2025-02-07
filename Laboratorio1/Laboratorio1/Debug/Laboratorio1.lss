@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Thu Feb 06 23:49:20 2025
+AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Fri Feb 07 11:53:01 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -990,7 +990,7 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Includin
                                  * Laboratorio1.asm
                                  *
                                  * Creado: 6/02/2025 20:44:19
-                                 * Autor : Pedro Castillo
+                                 * Autor : Alma Mata
                                  * Descripcion: Laboratorio 1, contador de 4 bits.
                                  */
                                  // Encabezado
@@ -1079,21 +1079,22 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Includin
                                  
                                  	// Lógica para aumento o decremento del contador
 000017 3001                      	CPI		R16, 0x01	// Comparación para saber si se presiono el botón 1 (aumento)
-000018 f019                      	BREQ	AUMENTO		// Llama al bloque aumento
-000019 3002                      	CPI		R16, 0b00000010
-00001a f021                      	BREQ	DECREMENTO
-00001b cff2                      	RJMP	MAIN
+000018 f019                      	BREQ	AUMENTO		// Salta al bloque aumento
+000019 3002                      	CPI		R16, 0x02	// Comparación para saber si se presiono el botón 1 (aumento)
+00001a f021                      	BREQ	DECREMENTO	// Salta al bloque decremento
+00001b cff2                      	RJMP	MAIN		// Regresa al inicio
                                  
                                  AUMENTO:
-00001c 9523                      	INC		R18
-00001d b925                      	OUT		PORTB, R18
-00001e cfef                      	RJMP	MAIN
+00001c 9523                      	INC		R18			// Aumenta el contador
+00001d b925                      	OUT		PORTB, R18	// Muestra la salida
+00001e cfef                      	RJMP	MAIN		// Regresa al inicio
                                  
                                  DECREMENTO:
-00001f 952a                      	DEC		R18
-000020 b925                      	OUT		PORTB, R18
-000021 cfec                      	RJMP	MAIN
+00001f 952a                      	DEC		R18			// Decrece el contador
+000020 b925                      	OUT		PORTB, R18	// Muestra la salida
+000021 cfec                      	RJMP	MAIN		// Regresa al inicio
                                  
+                                 // Rutina de interrupción
                                  DELAY:
 000022 ef3f                      	LDI		R19, 0xFF
                                  SUB_DELAY1:

@@ -25,11 +25,11 @@
  <LABELS>
   <SETUP><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>19</LINE></SETUP>
   <MAIN><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>37</LINE></MAIN>
-  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>66</LINE></DELAY>
+  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>67</LINE></DELAY>
   <AUMENTO><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>56</LINE></AUMENTO>
   <DECREMENTO><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>61</LINE></DECREMENTO>
-  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>68</LINE></SUB_DELAY1>
-  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>73</LINE></SUB_DELAY2>
-  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>78</LINE></SUB_DELAY3>
+  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>69</LINE></SUB_DELAY1>
+  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>74</LINE></SUB_DELAY2>
+  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>79</LINE></SUB_DELAY3>
  </LABELS>
 </ASSEMBLER_INFO>
