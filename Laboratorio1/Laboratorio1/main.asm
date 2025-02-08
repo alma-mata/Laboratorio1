@@ -30,8 +30,15 @@ SETUP:
 	LDI		R16, 0x00 
 	OUT		PORTB, R16	// Todos los bits del puerto B están apagados
 
+	// PORTD como salida inicialmente apagada
+	LDI		R16, 0xFF
+	OUT		DDRD, R16	// Establecer puerto D como salida
+	LDI		R16, 0x00 
+	OUT		PORTD, R16	// Todos los bits del puerto D están apagados
+
 	LDI		R17, 0xFF	// Variable que guarda el estado de los botones
-	LDI		R18, 0x00	// Variable para llevar el contador
+	LDI		R18, 0x00	// Variable para llevar el contador 1
+	LDI		R20, 0x00	// Variable para llevar el contador 2
 
 // Loop infinito
 MAIN:
@@ -47,21 +54,27 @@ MAIN:
 	MOV		R17, R16	// Guarda el estado viejo para futura comparación
 
 	// Lógica para aumento o decremento del contador
-	CPI		R16, 0x01	// Comparación para saber si se presiono el botón 1 (aumento)
-	BREQ	AUMENTO		// Salta al bloque aumento
-	CPI		R16, 0x02	// Comparación para saber si se presiono el botón 1 (aumento)
-	BREQ	DECREMENTO	// Salta al bloque decremento
-	RJMP	MAIN		// Regresa al inicio
+	CALL	CONTADOR_1
+	CALL	CONTADOR_2
+	RJMP	MAIN
 
-AUMENTO:
-	INC		R18			// Aumenta el contador
-	OUT		PORTB, R18	// Muestra la salida
-	RJMP	MAIN		// Regresa al inicio
 
-DECREMENTO:
-	DEC		R18			// Decrece el contador
-	OUT		PORTB, R18	// Muestra la salida
-	RJMP	MAIN		// Regresa al inicio
+CONTADOR_1:
+	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
+	INC		R18				// Salta al bloque aumento
+	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
+	DEC		R18				// Salta al bloque decremento
+	OUT		PORTB, R18
+	RET						// Regresa al inicio
+
+CONTADOR_2:
+	SBRS	R16, 4			// Salta si Bit 4 de PORTC esta en 1 (apagado)
+	INC		R20				// Salta al bloque aumento
+	SBRS	R16, 5			// Salta si Bit 5 de PORTC esta en 1 (apagado)
+	DEC		R20				// Salta al bloque decremento
+	OUT		PORTD, R20
+	RET						// Regresa al inicio
+
 
 // Rutina de interrupción
 DELAY:

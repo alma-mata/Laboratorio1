@@ -24,12 +24,12 @@
  </OUTPUT_FILES>
  <LABELS>
   <SETUP><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>19</LINE></SETUP>
-  <MAIN><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>37</LINE></MAIN>
-  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>67</LINE></DELAY>
-  <AUMENTO><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>56</LINE></AUMENTO>
-  <DECREMENTO><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>61</LINE></DECREMENTO>
-  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>69</LINE></SUB_DELAY1>
-  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>74</LINE></SUB_DELAY2>
-  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>79</LINE></SUB_DELAY3>
+  <MAIN><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>44</LINE></MAIN>
+  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>80</LINE></DELAY>
+  <CONTADOR_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>62</LINE></CONTADOR_1>
+  <CONTADOR_2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>70</LINE></CONTADOR_2>
+  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>82</LINE></SUB_DELAY1>
+  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>87</LINE></SUB_DELAY2>
+  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>92</LINE></SUB_DELAY3>
  </LABELS>
 </ASSEMBLER_INFO>
