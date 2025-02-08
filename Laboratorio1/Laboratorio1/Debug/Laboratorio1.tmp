@@ -25,11 +25,15 @@
  <LABELS>
   <SETUP><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>19</LINE></SETUP>
   <MAIN><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>44</LINE></MAIN>
-  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>80</LINE></DELAY>
-  <CONTADOR_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>62</LINE></CONTADOR_1>
-  <CONTADOR_2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>70</LINE></CONTADOR_2>
-  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>82</LINE></SUB_DELAY1>
-  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>87</LINE></SUB_DELAY2>
-  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>92</LINE></SUB_DELAY3>
+  <DELAY><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>95</LINE></DELAY>
+  <CONTADOR_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>64</LINE></CONTADOR_1>
+  <LLAMADO_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>58</LINE></LLAMADO_1>
+  <CONTADOR_2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>76</LINE></CONTADOR_2>
+  <REGRESO><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>60</LINE></REGRESO>
+  <OVERFLOW_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>84</LINE></OVERFLOW_1>
+  <UNDERFLOW_1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>89</LINE></UNDERFLOW_1>
+  <SUB_DELAY1><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>97</LINE></SUB_DELAY1>
+  <SUB_DELAY2><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>102</LINE></SUB_DELAY2>
+  <SUB_DELAY3><FILE>D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>107</LINE></SUB_DELAY3>
  </LABELS>
 </ASSEMBLER_INFO>
