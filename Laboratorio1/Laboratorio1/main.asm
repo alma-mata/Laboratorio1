@@ -62,19 +62,46 @@ MAIN:
 CONTADOR_1:
 	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
 	INC		R18				// Salta al bloque aumento
+	CPI		R18, 0x10
+	BREQ	OVERFLOW_1
 	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
 	DEC		R18				// Salta al bloque decremento
+	CPI		R18, 0xFF
+	BREQ	UNDERFLOW_1
 	OUT		PORTB, R18
 	RET						// Regresa al inicio
+
+OVERFLOW_1:
+	LDI		R18, 0x00
+	OUT		PORTB, R18
+	RET
+
+UNDERFLOW_1:
+	LDI		R18, 0x0F
+	OUT		PORTB, R18
+	RET
 
 CONTADOR_2:
 	SBRS	R16, 4			// Salta si Bit 4 de PORTC esta en 1 (apagado)
 	INC		R20				// Salta al bloque aumento
+	CPI		R20, 0x10
+	BREQ	OVERFLOW_2
 	SBRS	R16, 5			// Salta si Bit 5 de PORTC esta en 1 (apagado)
 	DEC		R20				// Salta al bloque decremento
+	CPI		R20, 0xFF
+	BREQ	UNDERFLOW_2
 	OUT		PORTD, R20
 	RET						// Regresa al inicio
 
+OVERFLOW_2:
+	LDI		R20, 0x00
+	OUT		PORTB, R18
+	RET
+
+UNDERFLOW_2:
+	LDI		R20, 0x0F
+	OUT		PORTB, R18
+	RET
 
 // Rutina de interrupción
 DELAY:
