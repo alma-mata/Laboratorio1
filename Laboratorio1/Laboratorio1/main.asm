@@ -61,30 +61,30 @@ MAIN:
 
 CONTADOR_1:
 	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
-	INC		R18				// Salta al bloque aumento
-	CPI		R18, 0x10
-	BREQ	OVERFLOW_1
+	INC		R18				// Incrementa en 1 al contador
+	CPI		R18, 0x10		// Comparación para identificar Overflow
+	BREQ	OVERFLOW_1		// Salta al bloque del overflow
 	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
-	DEC		R18				// Salta al bloque decremento
-	CPI		R18, 0xFF
-	BREQ	UNDERFLOW_1
-	OUT		PORTB, R18
-	RET						// Regresa al inicio
+	DEC		R18				// Resta 1 al contador
+	CPI		R18, 0xFF		// Comparación para identificar Underflow
+	BREQ	UNDERFLOW_1		// Salta al bloque del underflow
+	OUT		PORTB, R18		// Salida del contador
+	RET						// Regresa al llamado de CONTADOR_1
 
 OVERFLOW_1:
-	LDI		R18, 0x00
-	OUT		PORTB, R18
-	RET
+	LDI		R18, 0x00		// Asigna valor 0 al contador
+	OUT		PORTB, R18		// Muestra valor en la salida
+	RET						// Regresa al llamado de CONTADOR_1
 
 UNDERFLOW_1:
-	LDI		R18, 0x0F
-	OUT		PORTB, R18
-	RET
+	LDI		R18, 0x0F		// Asigna valor 15 al contador
+	OUT		PORTB, R18		// Muestra valor en la salida
+	RET						// Regresa al llamado de CONTADOR_1
 
-CONTADOR_2:
+CONTADOR_2:					//Misma lógica que CONTADOR_1
 	SBRS	R16, 4			// Salta si Bit 4 de PORTC esta en 1 (apagado)
 	INC		R20				// Salta al bloque aumento
-	CPI		R20, 0x10
+	CPI		R20, 0x10		
 	BREQ	OVERFLOW_2
 	SBRS	R16, 5			// Salta si Bit 5 de PORTC esta en 1 (apagado)
 	DEC		R20				// Salta al bloque decremento
@@ -93,12 +93,12 @@ CONTADOR_2:
 	OUT		PORTD, R20
 	RET						// Regresa al inicio
 
-OVERFLOW_2:
+OVERFLOW_2:					// Hace lo mismo que OVERFLOW_1
 	LDI		R20, 0x00
 	OUT		PORTB, R18
 	RET
 
-UNDERFLOW_2:
+UNDERFLOW_2:				// Hace lo mismo que UNDERFLOW_1
 	LDI		R20, 0x0F
 	OUT		PORTB, R18
 	RET

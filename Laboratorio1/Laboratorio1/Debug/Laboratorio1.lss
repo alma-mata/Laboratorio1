@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Sat Feb 08 15:15:22 2025
+AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Sun Feb 09 10:54:15 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1093,13 +1093,13 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Includin
                                  CONTADOR_1:
 000021 ff02                      	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
 000022 9523                      	INC		R18				// Salta al bloque aumento
-000023 3120                      	CPI		R18, 0x10
+000023 3120                      	CPI		R18, 0x10		// Comparación para identificar Overflow
 000024 f031                      	BREQ	OVERFLOW_1
 000025 ff03                      	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
 000026 952a                      	DEC		R18				// Salta al bloque decremento
-000027 3f2f                      	CPI		R18, 0xFF
+000027 3f2f                      	CPI		R18, 0xFF		// Comparación para identificar Underflow
 000028 f029                      	BREQ	UNDERFLOW_1
-000029 b925                      	OUT		PORTB, R18
+000029 b925                      	OUT		PORTB, R18		// Salida del contador
 00002a 9508                      	RET						// Regresa al inicio
                                  
                                  OVERFLOW_1:
