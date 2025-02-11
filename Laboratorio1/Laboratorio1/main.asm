@@ -1,11 +1,14 @@
 /*
+* UNIVERSIDAD DEL VALLE DE GUATEMALA
+* IE2023 - Programacion de Microcontroladores
 * Laboratorio1.asm
-*
+
 * Creado: 6/02/2025 20:44:19
-* Autor : Alma Mata
-* Descripcion: Laboratorio 1, contador de 4 bits.
+* Autor : Alma Mata Ixcayau
+* Descripcion: Pre-Lab 1, contador de 4 bits. Se agrega el trabajo del Lab y Post-Lab.
+* Hardware: ATmega328P
 */
-// Encabezado
+
 .include "M328PDEF.inc"
 .cseg
 .org 0x0000
@@ -23,7 +26,7 @@ SETUP:
 	OUT		DDRC, R16	// Establecer puerto C como entrada
 	LDI		R16, 0xFF
 	OUT		PORTC, R16	// Habilitar pull-ups en puerto C
-
+// Modificar PORT D como unica salida de contadores y PORT B como salida de sumador.
 	// PORTB como salida inicialmente apagado
 	LDI		R16, 0xFF
 	OUT		DDRB, R16	// Establecer puerto B como salida
@@ -56,6 +59,8 @@ MAIN:
 	// Lógica para aumento o decremento del contador
 	CALL	CONTADOR_1
 	CALL	CONTADOR_2
+	// Agregar subrutina para combinar ambos contadores en una salida
+	// Agregar sumador
 	RJMP	MAIN
 
 
