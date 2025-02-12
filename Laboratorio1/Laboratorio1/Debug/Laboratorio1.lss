@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Sun Feb 09 10:54:15 2025
+AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Tue Feb 11 22:10:49 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(12): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(12): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
                                  
                                  /*
                                  
@@ -987,13 +987,16 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Includin
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
+                                 * UNIVERSIDAD DEL VALLE DE GUATEMALA
+                                 * IE2023 - Programacion de Microcontroladores
                                  * Laboratorio1.asm
-                                 *
+                                 
                                  * Creado: 6/02/2025 20:44:19
-                                 * Autor : Alma Mata
-                                 * Descripcion: Laboratorio 1, contador de 4 bits.
+                                 * Autor : Alma Mata Ixcayau
+                                 * Descripcion: Pre-Lab 1, contador de 4 bits. Se agrega el trabajo del Lab y Post-Lab.
+                                 * Hardware: ATmega328P
                                  */
-                                 // Encabezado
+                                 
                                  .include "M328PDEF.inc"
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
@@ -1048,109 +1051,107 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(9): Includin
                                  
                                  // Configuración MCU
                                  SETUP:
+000004 e800                      	LDI		R16, 0x80		// El valor habilita cambios en CLKPR
+000005 9300 0061                 	STS		CLKPR, R16		// CLKPR divide el oscilador
+000007 e003                      	LDI		R16, 0x03		// 3 es equivalente a 8
+000008 9300 0061                 	STS		CLKPR, R16		// Se carga el valor para 8MHz/8 = 1MHz
                                  	// Configurar pines de entrada y salida (DDRx, PORTx, PINx)
                                  	// PORTC como entrada con pull-up habilitado
-000004 e000                      	LDI		R16, 0x00
-000005 b907                      	OUT		DDRC, R16	// Establecer puerto C como entrada
-000006 ef0f                      	LDI		R16, 0xFF
-000007 b908                      	OUT		PORTC, R16	// Habilitar pull-ups en puerto C
-                                 
+00000a e000                      	LDI		R16, 0x00
+00000b b907                      	OUT		DDRC, R16	// Establecer puerto C como entrada
+00000c ef0f                      	LDI		R16, 0xFF
+00000d b908                      	OUT		PORTC, R16	// Habilitar pull-ups en puerto C
+                                 // Modificar PORT D como unica salida de contadores y PORT B como salida de sumador.
                                  	// PORTB como salida inicialmente apagado
-000008 ef0f                      	LDI		R16, 0xFF
-000009 b904                      	OUT		DDRB, R16	// Establecer puerto B como salida
-00000a e000                      	LDI		R16, 0x00 
-00000b b905                      	OUT		PORTB, R16	// Todos los bits del puerto B están apagados
+00000e ef0f                      	LDI		R16, 0xFF
+00000f b904                      	OUT		DDRB, R16	// Establecer puerto B como salida
+000010 e000                      	LDI		R16, 0x00 
+000011 b905                      	OUT		PORTB, R16	// Todos los bits del puerto B están apagados
                                  
                                  	// PORTD como salida inicialmente apagada
-00000c ef0f                      	LDI		R16, 0xFF
-00000d b90a                      	OUT		DDRD, R16	// Establecer puerto D como salida
-00000e e000                      	LDI		R16, 0x00 
-00000f b90b                      	OUT		PORTD, R16	// Todos los bits del puerto D están apagados
+000012 ef0f                      	LDI		R16, 0xFF
+000013 b90a                      	OUT		DDRD, R16	// Establecer puerto D como salida
+000014 e000                      	LDI		R16, 0x00 
+000015 b90b                      	OUT		PORTD, R16	// Todos los bits del puerto D están apagados
                                  
-000010 ef1f                      	LDI		R17, 0xFF	// Variable que guarda el estado de los botones
-000011 e020                      	LDI		R18, 0x00	// Variable para llevar el contador 1
-000012 e040                      	LDI		R20, 0x00	// Variable para llevar el contador 2
+000016 ef1f                      	LDI		R17, 0xFF	// Variable que guarda el estado de los botones
+000017 e020                      	LDI		R18, 0x00	// Variable para llevar el contador 1
+000018 e040                      	LDI		R20, 0x00	// Variable para llevar el contador 2
+000019 e050                      	LDI		R21, 0x00	// Guarda combinacion de R18 y R20
+00001a e060                      	LDI		R22, 0x00	// Variable para la sumatoria
                                  
                                  // Loop infinito
                                  MAIN:
                                  	// Lógica del antirebote
-000013 b106                      	IN		R16, PINC	// Lectura de PINC
-000014 1710                      	CP		R17, R16	// Comparación entre estado nuevo y estado viejo
-000015 f3e9                      	BREQ	MAIN		// Regresa al inicio
-000016 940e 0041                 	CALL	DELAY		// Pequeño delay de confirmación
-000018 b106                      	IN		R16, PINC	// Se repite para confirmar el cambío de estado
-000019 1710                      	CP		R17, R16	
-00001a f3c1                      	BREQ	MAIN		// Regresa al inicio
+00001b b106                      	IN		R16, PINC	// Lectura de PINC
+00001c 1710                      	CP		R17, R16	// Comparación entre estado nuevo y estado viejo
+00001d f3e9                      	BREQ	MAIN		// Regresa al inicio
+00001e 940e 0045                 	CALL	DELAY		// Pequeño delay de confirmación
+000020 b106                      	IN		R16, PINC	// Se repite para confirmar el cambío de estado
+000021 1710                      	CP		R17, R16	
+000022 f3c1                      	BREQ	MAIN		// Regresa al inicio
                                  
-00001b 2f10                      	MOV		R17, R16	// Guarda el estado viejo para futura comparación
+000023 2f10                      	MOV		R17, R16	// Guarda el estado viejo para futura comparación
                                  
                                  	// Lógica para aumento o decremento del contador
-00001c 940e 0021                 	CALL	CONTADOR_1
-00001e 940e 0031                 	CALL	CONTADOR_2
-000020 cff2                      	RJMP	MAIN
+000024 940e 002e                 	CALL	CONTADOR_1
+000026 940e 0034                 	CALL	CONTADOR_2
+000028 940e 003a                 	CALL	COMBINACION		// Subrutina para combinar ambos contadores en una salida
                                  
+                                 	// Sumador de contadores
+00002a ff00                      	SBRS	R16, 0		// Salta si Bit 0 de PORTC esta en 1 (apagado)
+00002b 940e 0040                 	CALL	SUMADOR		// Llama al sumador
+                                 
+00002d cfed                      	RJMP	MAIN
                                  
                                  CONTADOR_1:
-000021 ff02                      	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
-000022 9523                      	INC		R18				// Salta al bloque aumento
-000023 3120                      	CPI		R18, 0x10		// Comparación para identificar Overflow
-000024 f031                      	BREQ	OVERFLOW_1
-000025 ff03                      	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
-000026 952a                      	DEC		R18				// Salta al bloque decremento
-000027 3f2f                      	CPI		R18, 0xFF		// Comparación para identificar Underflow
-000028 f029                      	BREQ	UNDERFLOW_1
-000029 b925                      	OUT		PORTB, R18		// Salida del contador
-00002a 9508                      	RET						// Regresa al inicio
+00002e ff02                      	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
+00002f 9523                      	INC		R18				// Incrementa en 1 al contador
+000030 ff03                      	SBRS	R16, 3			// Salta si Bit 3 de PORTC esta en 1 (apagado)
+000031 952a                      	DEC		R18				// Resta 1 al contador
+000032 702f                      	ANDI	R18, 0x0F		// Mascara para evitar Overflow
+000033 9508                      	RET						// Regresa al CALL
                                  
-                                 OVERFLOW_1:
-00002b e020                      	LDI		R18, 0x00
-00002c b925                      	OUT		PORTB, R18
-00002d 9508                      	RET
+                                 CONTADOR_2:					//Misma lógica que CONTADOR_1
+000034 ff04                      	SBRS	R16, 4			// Salta si Bit 4 de PORTC esta en 1 (apagado)
+000035 9543                      	INC		R20				// Salta al bloque aumento
+000036 ff05                      	SBRS	R16, 5			// Salta si Bit 5 de PORTC esta en 1 (apagado)
+000037 954a                      	DEC		R20				// Resta 1 al contador
+000038 704f                      	ANDI	R20, 0x0F		// Mascara para evitar Overflow
+000039 9508                      	RET						// Regresa al CALL
                                  
-                                 UNDERFLOW_1:
-00002e e02f                      	LDI		R18, 0x0F
-00002f b925                      	OUT		PORTB, R18
-000030 9508                      	RET
+                                 COMBINACION:	// Sub rutina para combinar contadores
+00003a 9542                      	SWAP	R20				// Intercambia los 4 bits más y menos significativos
+00003b 2f52                      	MOV		R21, R18		// Guarda R18 en R21
+00003c 2b54                      	OR		R21, R20		// Combina ambos contadores con la operación OR
+00003d 9542                      	SWAP	R20				// Regresa R20 a su estado original
+00003e b95b                      	OUT		PORTD, R21		// Muestra R21 en PORT D
+00003f 9508                      	RET						// Regresa a donde fue llamado
                                  
-                                 CONTADOR_2:
-000031 ff04                      	SBRS	R16, 4			// Salta si Bit 4 de PORTC esta en 1 (apagado)
-000032 9543                      	INC		R20				// Salta al bloque aumento
-000033 3140                      	CPI		R20, 0x10
-000034 f031                      	BREQ	OVERFLOW_2
-000035 ff05                      	SBRS	R16, 5			// Salta si Bit 5 de PORTC esta en 1 (apagado)
-000036 954a                      	DEC		R20				// Salta al bloque decremento
-000037 3f4f                      	CPI		R20, 0xFF
-000038 f029                      	BREQ	UNDERFLOW_2
-000039 b94b                      	OUT		PORTD, R20
-00003a 9508                      	RET						// Regresa al inicio
-                                 
-                                 OVERFLOW_2:
-00003b e040                      	LDI		R20, 0x00
-00003c b925                      	OUT		PORTB, R18
-00003d 9508                      	RET
-                                 
-                                 UNDERFLOW_2:
-00003e e04f                      	LDI		R20, 0x0F
-00003f b925                      	OUT		PORTB, R18
-000040 9508                      	RET
+                                 SUMADOR:			// Sumatoria de ambos contadores
+000040 2f62                      	MOV		R22, R18		// Copia R18 en R22
+000041 0f64                      	ADD		R22, R20		// Suma Contador 1 y 2
+000042 716f                      	ANDI	R22, 0x1F		// Mascara para evitar Overflow
+000043 b965                      	OUT		PORTB, R22		// Muestra la salida
+000044 9508                      	RET						// Regresa al CALL
                                  
                                  // Rutina de interrupción
                                  DELAY:
-000041 ef3f                      	LDI		R19, 0xFF
-                                 SUB_DELAY1:
-000042 953a                      	DEC		R19
-000043 3030                      	CPI		R19, 0
-000044 f7e9                      	BRNE	SUB_DELAY1
 000045 ef3f                      	LDI		R19, 0xFF
-                                 SUB_DELAY2:
+                                 SUB_DELAY1:
 000046 953a                      	DEC		R19
 000047 3030                      	CPI		R19, 0
-000048 f7e9                      	BRNE	SUB_DELAY2
+000048 f7e9                      	BRNE	SUB_DELAY1
 000049 ef3f                      	LDI		R19, 0xFF
-                                 SUB_DELAY3:
+                                 SUB_DELAY2:
 00004a 953a                      	DEC		R19
 00004b 3030                      	CPI		R19, 0
-00004c f7e9                      	BRNE	SUB_DELAY3
+00004c f7e9                      	BRNE	SUB_DELAY2
+00004d ef3f                      	LDI		R19, 0xFF
+                                 SUB_DELAY3:
+00004e 953a                      	DEC		R19
+00004f 3030                      	CPI		R19, 0
+000050 f7e9                      	BRNE	SUB_DELAY3
 
 
 RESOURCE USE INFORMATION
@@ -1170,37 +1171,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  25 r17:   4 r18:  12 r19:   9 r20:   8 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  30 r17:   4 r18:   6 r19:   9 r20:   8 
+r21:   4 r22:   5 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 5 out of 35 (14.3%)
+Registers used: 7 out of 35 (20.0%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   6 brge  :   0 brhc  :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
+andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   3 cbi   :   0 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   5 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
-cpi   :   7 cpse  :   0 dec   :   5 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :   3 cpse  :   0 dec   :   5 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   2 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :  18 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  14 pop   :   0 
-push  :   0 rcall :   0 ret   :   7 reti  :   0 rjmp  :   1 rol   :   0 
+lsr   :   0 mov   :   3 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   1 ori   :   0 out   :  10 pop   :   0 
+push  :   0 rcall :   0 ret   :   5 reti  :   0 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   4 sec   :   0 seh   :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   5 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 14 out of 113 (12.4%)
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   2 
+sub   :   0 subi  :   0 swap  :   2 tst   :   0 wdr   :   0 
+Instructions used: 19 out of 113 (16.8%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00009c    156      0    156   32768   0.5%
+[.cseg] 0x000000 0x0000a4    164      0    164   32768   0.5%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
