@@ -21,10 +21,10 @@ OUT SPH, R16
 // Configuración MCU
 SETUP:
 	// Configuración del CLOCK en 1 MHz
-	LDI		R16, 0x80		// El valor habilita cambios en CLKPR
+	LDI		R16, (1 << CLKPCE)		// El valor habilita cambios en CLKPR
 	STS		CLKPR, R16		// CLKPR divide el oscilador
-	LDI		R16, 0x03		// 3 es equivalente a 8
-	STS		CLKPR, R16		// Se carga el valor para 8MHz/8 = 1MHz
+	LDI		R16, 0x04
+	STS		CLKPR, R16		// Se carga el valor para obtener 1MHz
 
 	// Configurar pines de entrada y salida (DDRx, PORTx, PINx)
 	// PORTC como entrada con pull-up habilitado
@@ -76,6 +76,7 @@ MAIN:
 
 	RJMP	MAIN
 
+// SUB-RUTINAS
 CONTADOR_1:
 	SBRS	R16, 2			// Salta si Bit 2 de PORTC esta en 1 (apagado)
 	INC		R18				// Incrementa en 1 al contador

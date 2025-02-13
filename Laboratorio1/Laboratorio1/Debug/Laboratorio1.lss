@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Tue Feb 11 22:10:49 2025
+AVRASM ver. 2.2.8  D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm Wed Feb 12 11:15:03 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(12): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1051,16 +1051,19 @@ D:\Documents\GitHub\Laboratorio1\Laboratorio1\Laboratorio1\main.asm(12): Includi
                                  
                                  // Configuración MCU
                                  SETUP:
+                                 	// Configuración del CLOCK en 1 MHz
 000004 e800                      	LDI		R16, 0x80		// El valor habilita cambios en CLKPR
 000005 9300 0061                 	STS		CLKPR, R16		// CLKPR divide el oscilador
 000007 e003                      	LDI		R16, 0x03		// 3 es equivalente a 8
 000008 9300 0061                 	STS		CLKPR, R16		// Se carga el valor para 8MHz/8 = 1MHz
+                                 
                                  	// Configurar pines de entrada y salida (DDRx, PORTx, PINx)
                                  	// PORTC como entrada con pull-up habilitado
 00000a e000                      	LDI		R16, 0x00
 00000b b907                      	OUT		DDRC, R16	// Establecer puerto C como entrada
 00000c ef0f                      	LDI		R16, 0xFF
 00000d b908                      	OUT		PORTC, R16	// Habilitar pull-ups en puerto C
+                                 
                                  // Modificar PORT D como unica salida de contadores y PORT B como salida de sumador.
                                  	// PORTB como salida inicialmente apagado
 00000e ef0f                      	LDI		R16, 0xFF
